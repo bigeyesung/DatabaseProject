@@ -18,11 +18,11 @@ using form = std::unordered_map<	std::string,
 class Util
 {
 public:
-	Util();
+	//Util();
 	~Util();
 	void write_csv(std::string filename, form &dataset, std::vector<std::string> &props);
 	void SetFormat(std::vector<std::string> &props);
-	bool read_csv(std::string &filename, form &dataSet, std::vector<std::string> &props);
+	bool read_csv(const std::string &filename, form &dataSet, std::vector<std::string> &props);
 	bool IsFormat(std::string &s);
 	static std::string getCurrentDir();
 

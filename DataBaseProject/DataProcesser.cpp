@@ -23,13 +23,13 @@ void DataProcesser::Analyze(DataTable &firstTable, DataTable &secondTable)
 	std::vector<std::string> &fstProps = firstTable.GetProps();
 	std::vector<std::string> &secProps = secondTable.GetProps();
 	std::set<std::string> newProps(fstProps.begin(), fstProps.end());
-	for (auto x : secProps)
+	for (auto& x : secProps)
 		newProps.insert(x);
 	//merge two tables props
 	this->MergeProps(firDataSet, secDataSet, newProps);
 	this->MergeProps(secDataSet, firDataSet, newProps);
 
-	for (auto drugDict : firDataSet)
+	for (auto& drugDict : firDataSet)
 	{
 		//if find it in secData-> do intersection, and remove item from secData
 		if (secDataSet.find(drugDict.first) != secDataSet.end())
@@ -45,7 +45,7 @@ void DataProcesser::Analyze(DataTable &firstTable, DataTable &secondTable)
 	}
 
 	//iterate secDataSet(currently it is diff_of_secondTable)
-	for (auto drugName : secDataSet)
+	for (auto& drugName : secDataSet)
 	{
 		this->__union->GetData()[drugName.first] = drugName.second;
 	}
@@ -87,22 +87,22 @@ void DataProcesser::MergeProps(form &firDataSet, form &secDataSet, std::set<std:
 
 std::unique_ptr<DataTable> DataProcesser::GetUnion()
 {
-	return std::move(this->__union);
+	return std::move(__union);
 }
 
 std::unique_ptr<DataTable> DataProcesser::GetInter()
 {
-	return std::move(this->__inter);
+	return std::move(__inter);
 }
 
 std::unique_ptr<DataTable> DataProcesser::GetDiFir()
 {
-	return std::move(this->__diFir);
+	return std::move(__diFir);
 }
 
 std::unique_ptr<DataTable> DataProcesser::GetDiSec()
 {
-	return std::move(this->__diSec);
+	return std::move(__diSec);
 }
 
 

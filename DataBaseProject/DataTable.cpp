@@ -1,32 +1,32 @@
 #include "DataTable.h"
 
-DataTable::DataTable()
-{
-}
+//DataTable::DataTable()
+//{
+//}
 
 DataTable::~DataTable()
 {
 }
 
-bool DataTable::ReadFile(std::string filePath)
+bool DataTable::ReadFile(const std::string &filePath)
 {
-	return this->__util.read_csv(filePath, this->__dataSet, this->__props);
+	return __util.read_csv(filePath, __dataSet, __props);
 }
 
-void DataTable::SaveFile(std::string filePath)
+void DataTable::SaveFile(const std::string &filePath)
 {
-	this->__util.write_csv(filePath, this->__dataSet, this->__props);
+	__util.write_csv(filePath, __dataSet, __props);
 }
 
 form &DataTable::GetData()
 {
 	//std::cout << "cur addr: " << &(this->__data) << std::endl;
-	return this->__dataSet;
+	return __dataSet;
 }
 
 std::vector<std::string> &DataTable::GetProps()
 {
 	//std::cout << "cur addr :"<<&(this->__props) << std::endl;
-	return this->__props;
+	return __props;
 }
 

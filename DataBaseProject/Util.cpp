@@ -1,8 +1,8 @@
 #include "Util.h"
 
-Util::Util()
-{
-}
+//Util::Util()
+//{
+//}
 
 
 Util::~Util()
@@ -13,7 +13,7 @@ void Util::write_csv(std::string filename, form &dataset, std::vector<std::strin
 {
 	std::unordered_map<std::string, std::string> title;
 	std::ofstream outFile(filename);
-	this->SetFormat(props);
+	SetFormat(props);
 	for (int ind = 0; ind < props.size(); ind++)
 	{
 		outFile << props[ind];
@@ -22,7 +22,7 @@ void Util::write_csv(std::string filename, form &dataset, std::vector<std::strin
 	}
 	outFile << "\n";
 	//int i = 0;
-	for (auto data : dataset)
+	for (auto& data : dataset)
 	{
 		for (int ind = 0; ind < props.size(); ind++)
 		{
@@ -44,7 +44,7 @@ void Util::write_csv(std::string filename, form &dataset, std::vector<std::strin
 	outFile.close();
 }
 
-bool Util::read_csv(std::string &filename, form &dataSet, std::vector<std::string> &props)
+bool Util::read_csv(const std::string &filename, form &dataSet, std::vector<std::string> &props)
 {
 	std::unordered_map<std::string, std::string> metaData;
 	std::ifstream inputFile(filename);
@@ -124,7 +124,7 @@ void Util::SetFormat(std::vector<std::string>& props)
 {
 	std::vector<std::string> orderedProps;
 	orderedProps.push_back("Molecule");
-	for (auto prop : props) {
+	for (auto& prop : props) {
 		if (prop != "Molecule")
 			orderedProps.push_back(prop);
 	}

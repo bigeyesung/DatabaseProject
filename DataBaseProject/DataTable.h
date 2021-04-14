@@ -8,10 +8,10 @@ private:
 	form __dataSet;
 	Util __util;
 public:
-	DataTable();
+	//DataTable();
 	~DataTable();
-	bool ReadFile(std::string filePath);
-	void SaveFile(std::string filePath);
+	bool ReadFile(const std::string &filePath);
+	void SaveFile(const std::string &filePath);
 	std::vector<std::string> &GetProps();
 	form &GetData();
 };
